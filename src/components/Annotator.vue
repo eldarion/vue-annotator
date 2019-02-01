@@ -1,5 +1,5 @@
 <template>
-  <svg ref="svg" :width="w" :height="h">
+  <svg ref="svg" :viewBox="viewbox" :width="w" :height="h">
 
     <foreignObject oncontextmenu="return false;" ref="bgSvg" x="0" y="0" :width="w" :height="h">
       <div ref="bg" class="background">
@@ -40,6 +40,9 @@ export default {
     height: {
       type: [Number, String],
       validator: (value) => !isNaN(value) || value === undefined
+    },
+    viewbox: {
+      type: String
     },
     drawing: Boolean,
     noInteract: Boolean,

@@ -1,7 +1,7 @@
 <template>
   <svg ref="svg" :viewBox="viewbox" :width="w" :height="h">
 
-    <foreignObject oncontextmenu="return false;" ref="bgSvg" x="0" y="0" :width="w" :height="h">
+    <foreignObject oncontextmenu="return false;" ref="bgSvg" x="0" y="0" :width="imgW" :height="imgH">
       <div ref="bg" class="background">
         <slot></slot>
       </div>
@@ -41,6 +41,14 @@ export default {
       type: [Number, String],
       validator: (value) => !isNaN(value) || value === undefined
     },
+    imgWidth: {
+      type: [Number, String],
+      validator: (value) => !isNaN(value) || value === undefined
+    },
+    imgHeight: {
+      type: [Number, String],
+      validator: (value) => !isNaN(value) || value === undefined
+    },
     viewbox: {
       type: String
     },
@@ -65,6 +73,8 @@ export default {
     return {
       w: parseInt(this.width) || 0,
       h: parseInt(this.height) || 0,
+      imgW: parseInt(this.imgWidth) || parseInt(this.width) || 0,
+      imgH: parseInt(this.imgHeight) || parseInt(this.height) || 0,
       background: SVG.adopt(this.$refs.bgSvg),
       annotations: SVG.adopt(this.$refs.annotations)
     }

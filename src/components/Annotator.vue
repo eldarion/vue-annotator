@@ -67,14 +67,26 @@ export default {
     noSelect: function (value) {
       this.enableSelection(!value)
     },
+    imgWidth: {
+      immediate: true,
+      handler: function (value) {
+        this.imgW = parseInt(this.imgWidth);
+      },
+    },
+    imgHeight: {
+      immediate: true,
+      handler: function (value) {
+        this.imgH = parseInt(this.imgHeight);
+      },
+    }
   },
 
   data () {
     return {
       w: parseInt(this.width) || 0,
       h: parseInt(this.height) || 0,
-      imgW: parseInt(this.imgWidth) || parseInt(this.width) || 0,
-      imgH: parseInt(this.imgHeight) || parseInt(this.height) || 0,
+      imgW: parseInt(this.width) || 0,
+      imgH: parseInt(this.height) || 0,
       background: SVG.adopt(this.$refs.bgSvg),
       annotations: SVG.adopt(this.$refs.annotations)
     }
